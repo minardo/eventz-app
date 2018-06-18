@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="9pt"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvUsername"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12pt"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/btnEvent"
+                                android:layout_centerHorizontal="true"
+                                android:text="Events"
+                                android:textColor="@color/circle_events"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnEvent"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circle_events"
+                                android:drawableTop="@drawable/ic_event_available_black_50dp"
+                                android:indeterminate="false"
+                                android:onClick="onclick"
+                                android:padding="13dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/btnEditProfile"
+                                android:layout_centerHorizontal="true"
+                                android:text="Edit Profile"
+                                android:textColor="@color/circle_profile"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnEditProfile"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circle_profile"
+                                android:drawableTop="@drawable/ic_person_black_50dp"
+                                android:indeterminate="false"
+                                android:onClick="onclick"
+                                android:padding="16dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/btnMyEvent"
+                                android:layout_centerHorizontal="true"
+                                android:text="My Event"
+                                android:textColor="@color/circle_my_event"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnMyEvent"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/circle_my_event"
+                                android:drawableTop="@drawable/ic_event_available_black_50dp"
+                                android:indeterminate="false"
+                                android:onClick="onclick"
+                                android:padding="16dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12pt"
+                android:orientation="horizontal"
+                android:paddingBottom="9dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/btnCreateEvent"
+                                android:layout_centerHorizontal="true"
+                                android:text="Create Event"
+                                android:textColor="@color/circle_create_event"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnCreateEvent"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="12dp"
+                                android:background="@drawable/circle_create_event"
+                                android:drawableTop="@drawable/ic_event_available_black_50dp"
+                                android:indeterminate="false"
+                                android:onClick="onclick"
+                                android:padding="12dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/btnFollowingEvent"
+                                android:layout_centerHorizontal="true"
+                                android:text="Following Event"
+                                android:textColor="@color/circle_following_event"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnFollowingEvent"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="12dp"
+                                android:background="@drawable/circle_following_event"
+                                android:drawableTop="@drawable/ic_event_available_black_50dp"
+                                android:indeterminate="false"
+                                android:onClick="onclick"
+                                android:padding="16dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/btnLogout"
+                                android:layout_centerHorizontal="true"
+                                android:text="Logout"
+                                android:textColor="@color/circle_logout"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/btnLogout"
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="75dp"
+                                android:layout_height="75dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_marginTop="12dp"
+                                android:background="@drawable/circle_logout"
+                                android:drawableTop="@drawable/ic_exit_to_app_black_50dp"
+                                android:indeterminate="false"
+                                android:onClick="onclick"
+                                android:padding="17dp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

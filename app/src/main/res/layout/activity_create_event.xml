@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    tools:context=".activity.CreateEventActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etNameEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Place"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Person"
+            android:inputType="number"
+            android:maxLength="12" />
+
+        <EditText
+            android:id="@+id/etQuota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Quota Participant"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/etDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="Date Time" />
+
+        <EditText
+            android:id="@+id/etEventType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Workshop / Seminar"
+            android:inputType="text"
+            android:maxLength="8" />
+
+        <Button
+            android:id="@+id/btnCreateEventActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/circle_create_event"
+            android:text="Create Event"
+            android:textColor="#f8f8f8" />
+
+        <TextView
+            android:id="@+id/tvResponse"
+            android:layout_marginTop="35dp"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
