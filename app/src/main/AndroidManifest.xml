@@ -26,12 +26,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/dashboard"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".activity.CreateEventActivity"
             android:label="@string/create_event"
@@ -40,7 +38,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
     </application>
 
 </manifest>

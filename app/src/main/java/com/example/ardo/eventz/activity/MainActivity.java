@@ -40,13 +40,11 @@ public class MainActivity extends AppCompatActivity {
         Log.v("username",username);
         tvUsername.setText("Hallo "+username);
 
-        buttonLogout.setOnClickListener(new View.OnClickListener() {
+        buttonEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SessionManager.clearAll(getApplicationContext());
-                startActivity(new Intent(MainActivity.this, LoginActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                finish();
+                Intent intent = new Intent(MainActivity.this, EventActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -55,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreateEventActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SessionManager.clearAll(getApplicationContext());
+                startActivity(new Intent(MainActivity.this, LoginActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                finish();
             }
         });
     }

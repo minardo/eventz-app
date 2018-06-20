@@ -6,6 +6,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface BaseApiService {
@@ -24,8 +25,9 @@ public interface BaseApiService {
                                        @Field("password") String password);
 
     @FormUrlEncoded
-    @POST("/api_event/event/")
-    Call<CreateEventModel> createEvent(@Field("name") String name,
+    @POST("api_event/event/")
+    Call<CreateEventModel> createEvent(@Header("csrftoken") String csrftoken,
+                                       @Field("name") String name,
                                        @Field("description") String description,
                                        @Field("place") String place,
                                        @Field("contact") String contact,

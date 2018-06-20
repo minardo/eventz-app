@@ -28,9 +28,9 @@ public class CreateEventModel {
     @SerializedName("time")
     @Expose
     private String time;
-    @SerializedName("image")
-    @Expose
-    private Object image;
+//    @SerializedName("image")
+//    @Expose
+//    private Object image;
     @SerializedName("event_type")
     @Expose
     private String eventType;
@@ -99,13 +99,13 @@ public class CreateEventModel {
         this.time = time;
     }
 
-    public Object getImage() {
-        return image;
-    }
-
-    public void setImage(Object image) {
-        this.image = image;
-    }
+//    public Object getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(Object image) {
+//        this.image = image;
+//    }
 
     public String getEventType() {
         return eventType;
@@ -126,7 +126,7 @@ public class CreateEventModel {
                 ", contact='" + contact + '\'' +
                 ", quota=" + quota +
                 ", time='" + time + '\'' +
-                ", image=" + image +
+//                ", image=" + image +
                 ", eventType='" + eventType + '\'' +
                 '}';
     }

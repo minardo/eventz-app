@@ -1,5 +1,6 @@
 package com.example.ardo.eventz.activity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -14,15 +15,17 @@ import android.widget.Toast;
 
 import com.example.ardo.eventz.R;
 import com.example.ardo.eventz.networking.BaseApiService;
+import com.example.ardo.eventz.networking.RetrofitClient;
+import com.example.ardo.eventz.utils.AddCookiesInterceptor;
 import com.example.ardo.eventz.utils.SessionManager;
 import com.example.ardo.eventz.networking.UtilsApi;
-
-import java.net.CookieHandler;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.ardo.eventz.utils.AddCookiesInterceptor.PREF_COOKIES;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,12 +35,15 @@ public class LoginActivity extends AppCompatActivity {
     TextView textViewRegister;
     ProgressDialog progressDialog;
     Context mContext;
+    Activity context = this;
     BaseApiService mBaseApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        RetrofitClient retrofitClient = new RetrofitClient(this);
 
         mContext = this;
         mBaseApiService = UtilsApi.getApiService(); // init yang ada di package networking
@@ -76,11 +82,13 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         if (response.isSuccessful()) {
                             // If login success, data will be parsing to next activity (dashboard activity)
+                            RetrofitClient retrofitClient = new RetrofitClient(context);
                             Log.i("debug", "onResponse Success");
                             Toast.makeText(mContext, "Login Success", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                             String username = editTextUsername.getText().toString();
                             SessionManager.saveSPString(getApplicationContext(), SessionManager.SP_USERNAME,username);
+                            SessionManager.saveSPString(getApplicationContext(), PREF_COOKIES, PREF_COOKIES);
                             startActivity(new Intent(mContext, MainActivity.class)
                                     .putExtra(username, editTextUsername.getText().toString())
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));

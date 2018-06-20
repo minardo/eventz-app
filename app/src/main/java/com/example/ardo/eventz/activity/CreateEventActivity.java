@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ardo.eventz.R;
 import com.example.ardo.eventz.networking.BaseApiService;
@@ -100,7 +101,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 String place = editTextPlace.getText().toString().trim();
                 String contact = editTextContact.getText().toString().trim();
                 String quota = editTextQuota.getText().toString().trim();
-                String time = editTextNameEvent.getText().toString().trim();
+                String time = editTextDateTime.getText().toString().trim();
                 String event_type = editTextEventType.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(description)
@@ -109,6 +110,7 @@ public class CreateEventActivity extends AppCompatActivity {
                         && !TextUtils.isEmpty(event_type)) {
                     createEvent(name, description, place, contact, quota, time, event_type);
                 }
+                progressDialog = ProgressDialog.show(mContext, null, "Please Wait...", true, false);
             }
         });
     }
@@ -117,13 +119,15 @@ public class CreateEventActivity extends AppCompatActivity {
                             String place, String contact,
                             String quota, String time,
                             String event_type) {
-        mBaseApiService.createEvent(name, description,
+        mBaseApiService.createEvent("", name, description,
                 place, contact, quota, time, event_type).enqueue(new Callback<CreateEventModel>() {
             @Override
             public void onResponse(Call<CreateEventModel> call, Response<CreateEventModel> response) {
                 if (response.isSuccessful()) {
                     showResponse(response.body().toString());
                     Log.i("debug", "post submitted to API." + response.body().toString());
+                    Toast.makeText(mContext, "Create Event Success", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                 }
             }
 

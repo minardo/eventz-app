@@ -41,7 +41,10 @@ captures/
 .idea/dictionaries
 .idea/libraries
 .idea/caches
+<<<<<<< HEAD
 .idea/modules.xml
+=======
+>>>>>>> a285de61ecbdb3661f8316909d8c473e15adace4
 
 # Keystore files
 # Uncomment the following line if you do not want to check your keystore files in.
