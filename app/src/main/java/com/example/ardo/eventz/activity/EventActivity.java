@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.ardo.eventz.R;
 import com.example.ardo.eventz.adapter.EventAdapter;
 import com.example.ardo.eventz.model.EventModel;
-import com.example.ardo.eventz.model.Result;
+import com.example.ardo.eventz.model.EventModelResult;
 import com.example.ardo.eventz.networking.BaseApiService;
 import com.example.ardo.eventz.networking.UtilsApi;
 
@@ -29,7 +29,7 @@ public class EventActivity extends AppCompatActivity {
     ProgressDialog loading;
 
     Context mContext;
-    List<Result> allEventItemList = new ArrayList<>();
+    List<EventModelResult> allEventItemList = new ArrayList<>();
     EventAdapter eventAdapter;
     BaseApiService mApiService;
 
@@ -62,7 +62,7 @@ public class EventActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     loading.dismiss();
 
-                    final List<Result> results = response.body().getResults();
+                    final List<EventModelResult> results = response.body().getResults();
 
                     rvEvent.setAdapter(new EventAdapter(mContext, results));
                     eventAdapter.notifyDataSetChanged();

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.ardo.eventz.R;
-import com.example.ardo.eventz.model.Result;
+import com.example.ardo.eventz.model.EventModelResult;
 
 import java.util.List;
 import java.util.Random;
@@ -20,7 +20,7 @@ import java.util.Random;
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder> {
 
     Context context;
-    List<Result> allEventItemList;
+    List<EventModelResult> allEventItemList;
 
     public String[] mColors = {
             "#39add1", // light blue
@@ -38,7 +38,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
             "#b7c0c7"  // light gray
     };
 
-    public EventAdapter(Context context, List<Result> allEventItemList) {
+    public EventAdapter(Context context, List<EventModelResult> allEventItemList) {
         this.context = context;
         this.allEventItemList = allEventItemList;
     }
@@ -52,7 +52,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventHolder>
 
     @Override
     public void onBindViewHolder(@NonNull EventHolder holder, int position) {
-        final Result alleventitem = allEventItemList.get(position);
+        final EventModelResult alleventitem = allEventItemList.get(position);
         holder.tvNameEvent.setText(alleventitem.getName());
         holder.tvDescEvent.setText(alleventitem.getDescription());
 //        holder.tvPlaceEvent.setText(alleventitem.getPlace());

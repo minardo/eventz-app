@@ -17,7 +17,7 @@ public class EventModel {
     private Object previous;
     @SerializedName("results")
     @Expose
-    private List<Result> results = null;
+    private List<EventModelResult> results = null;
 
     public Integer getCount() {
         return count;
@@ -43,11 +43,11 @@ public class EventModel {
         this.previous = previous;
     }
 
-    public List<Result> getResults() {
+    public List<EventModelResult> getResults() {
         return results;
     }
 
-    public void setResults(List<Result> results) {
+    public void setResults(List<EventModelResult> results) {
         this.results = results;
     }
 
