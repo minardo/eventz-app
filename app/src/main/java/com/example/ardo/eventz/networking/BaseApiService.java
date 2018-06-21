@@ -1,11 +1,13 @@
 package com.example.ardo.eventz.networking;
 
 import com.example.ardo.eventz.model.CreateEventModel;
+import com.example.ardo.eventz.model.EventModel;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 
@@ -34,4 +36,7 @@ public interface BaseApiService {
                                        @Field("quota") String quota,
                                        @Field("time") String time,
                                        @Field("event_type") String event_type);
+
+    @GET("api_event/event/")
+    Call<EventModel> getAllEvent();
 }

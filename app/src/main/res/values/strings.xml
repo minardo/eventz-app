@@ -14,4 +14,11 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="name_event">Name</string>
+    <string name="description_event">Description</string>
+    <string name="place_event">Place</string>
+    <string name="contact_event">Contact</string>
+    <string name="quota_event">Quota</string>
+    <string name="time_event">Time</string>
+    <string name="type_event">Type</string>
 </resources>
