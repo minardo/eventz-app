@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Event</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="dashboard">Dashboard</string>
