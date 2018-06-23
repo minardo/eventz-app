@@ -92,6 +92,7 @@ public class EventActivity extends AppCompatActivity {
 //                            Toast.makeText(getApplicationContext(), "Id : " + results.get(position).getId() + " selected", Toast.LENGTH_SHORT).show();
 
                             Intent i = new Intent(EventActivity.this, EventDetailActivity.class);
+                            i.putExtra("id", results.get(position).getId());
                             i.putExtra("name", results.get(position).getName());
                             i.putExtra("head_description", results.get(position).getDescription());
                             i.putExtra("description", results.get(position).getDescription());
