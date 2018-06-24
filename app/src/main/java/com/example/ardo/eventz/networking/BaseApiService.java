@@ -1,5 +1,7 @@
 package com.example.ardo.eventz.networking;
 
+import com.example.ardo.eventz.model.AllUserModel;
+import com.example.ardo.eventz.model.AllUserModelResult;
 import com.example.ardo.eventz.model.CreateEventModel;
 import com.example.ardo.eventz.model.EventModel;
 import com.example.ardo.eventz.model.EventModelResult;
@@ -60,4 +62,7 @@ public interface BaseApiService {
     Call<MyEventModel> getMyEvent(
             @Path("id") Integer userId
     );
+
+    @GET("api_user/users")
+    Call<AllUserModel> getAllUser();
 }

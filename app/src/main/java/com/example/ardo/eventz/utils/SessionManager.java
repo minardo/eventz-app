@@ -7,6 +7,7 @@ import java.util.HashSet;
 
 public class SessionManager {
 
+    public static final String SP_ID = "spID";
     public static final String SP_USERNAME = "spUsername";
     public static final String SP_LOGIN = "loginSharedPreference";
 
