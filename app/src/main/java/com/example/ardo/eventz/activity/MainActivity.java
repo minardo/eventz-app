@@ -41,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         Log.v("username",username);
         tvUsername.setText("Hallo "+username);
 
+        buttonMyEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MyEventActivity.class);
+                startActivity(intent);
+            }
+        });
+
         buttonEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -3,6 +3,8 @@ package com.example.ardo.eventz.networking;
 import com.example.ardo.eventz.model.CreateEventModel;
 import com.example.ardo.eventz.model.EventModel;
 import com.example.ardo.eventz.model.EventModelResult;
+import com.example.ardo.eventz.model.MyEventModel;
+import com.example.ardo.eventz.model.MyEventModelResult;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -52,5 +54,10 @@ public interface BaseApiService {
     @GET("api_event/event/{id}")
     Call<EventModelResult> getItemEvent(
             @Path("id") Integer id
+    );
+
+    @GET("api_user/users/{id}/events/")
+    Call<MyEventModel> getMyEvent(
+            @Path("id") Integer userId
     );
 }
