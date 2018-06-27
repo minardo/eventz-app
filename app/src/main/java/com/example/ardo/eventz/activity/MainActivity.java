@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private void initComponents() {
         tvUsername = (TextView) findViewById(R.id.tvUsername);
         buttonEvent = (Button) findViewById(R.id.btnEvent);
-        buttonEditProfile = (Button) findViewById(R.id.btnEditProfile);
         buttonMyEvent = (Button) findViewById(R.id.btnMyEvent);
         buttonCreateEvent = (Button) findViewById(R.id.btnCreateEvent);
         buttonFollowingEvent = (Button) findViewById(R.id.btnFollowingEvent);
