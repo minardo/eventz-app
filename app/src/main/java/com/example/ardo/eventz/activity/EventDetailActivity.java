@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ardo.eventz.R;
 import com.example.ardo.eventz.model.EventModelResult;
+import com.example.ardo.eventz.model.HaveBeenJoined;
+import com.example.ardo.eventz.model.JoinEventModel;
 import com.example.ardo.eventz.networking.BaseApiService;
 import com.example.ardo.eventz.networking.UtilsApi;
 
@@ -27,6 +31,7 @@ public class EventDetailActivity extends AppCompatActivity {
             tvHeadContactPersonEventDetail, tvHeadQuotaEventDetail, tvHeadTimeEventDetail,
             tvHeadTypeEventDetail;
     public ImageView bgNameEventDetail;
+    public Button btnEventRegister;
     private Integer quota, id;
     Intent intent = getIntent();
     private static final String TAG = "EventDetailActivity";
@@ -64,7 +69,72 @@ public class EventDetailActivity extends AppCompatActivity {
         tvHeadTypeEventDetail.setText("Category");
         tvTypeEventDetail = (TextView) findViewById(R.id.tvTypeEventDetail);
 
+        btnEventRegister = (Button) findViewById(R.id.btnEventRegister);
+
+        btnEventRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                joinEvent();
+            }
+        });
+
         getData();
+
+//        afterJoin();
+    }
+
+//    private void afterJoin() {
+//        Log.i(TAG, "afterJoin: ");
+//        mApiService = UtilsApi.getApiService();
+//        mApiService.getJoinEvent(id).enqueue(new Callback<JoinEventModel>() {
+//            @Override
+//            public void onResponse(Call<JoinEventModel> call, Response<JoinEventModel> response) {
+//                if (response.code() == 406){
+//                    btnEventRegister.setVisibility(View.INVISIBLE);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JoinEventModel> call, Throwable t) {
+//                Log.i(TAG, "onFailure: Join Event Failure");
+//                Toast.makeText(EventDetailActivity.this, "Join Event Failure", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
+    public void joinEvent() {
+        mApiService = UtilsApi.getApiService();
+        mApiService.getJoinEvent(id).enqueue(new Callback<JoinEventModel>() {
+            @Override
+            public void onResponse(Call<JoinEventModel> call, Response<JoinEventModel> response) {
+                if (response.isSuccessful()) {
+                    String statusOk = response.body().getStatus();
+                    Log.i(TAG, "onResponse: Join Event Success"+statusOk +response);
+                    Toast.makeText(EventDetailActivity.this, "Join Event Success", Toast.LENGTH_SHORT).show();
+                    if (statusOk.equals("ok")) {
+                        Log.i(TAG, "onResponse: TEST BRO");
+                        btnEventRegister.setVisibility(View.INVISIBLE);
+                    }
+                } else {
+                    switch (response.code()) {
+                        case 406:
+                            Log.i(TAG, "onResponse: You have been joined" +response);
+                            Toast.makeText(EventDetailActivity.this, "You have been joined", Toast.LENGTH_SHORT).show();
+                            break;
+                        case 400:
+                            Log.i(TAG, "onResponse: Event has passed" +response);
+                            Toast.makeText(EventDetailActivity.this, "Event has passed", Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JoinEventModel> call, Throwable t) {
+                Log.i(TAG, "onFailure: Join Event Failure");
+                Toast.makeText(EventDetailActivity.this, "Join Event Failure", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void getData() {

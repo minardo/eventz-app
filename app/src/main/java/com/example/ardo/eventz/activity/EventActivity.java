@@ -65,17 +65,18 @@ public class EventActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<EventModel> call, Response<EventModel> response) {
                 final List<EventModelResult> results = response.body().getResults();
-                if (response.isSuccessful()) {
-                    loading.dismiss();
-
-//                    final List<EventModelResult> results = response.body().getResults();
-
-                    rvEvent.setAdapter(new EventAdapter(mContext, results));
-                    eventAdapter.notifyDataSetChanged();
+                if (response.body().getCount() == 0) {
+                    Toast.makeText(mContext, "Event Empty", Toast.LENGTH_SHORT).show();
                 } else {
-                    loading.dismiss();
-                    Toast.makeText(mContext, "Failed Pull Event Data", Toast.LENGTH_SHORT).show();
+                    if (response.isSuccessful()) {
+                        rvEvent.setAdapter(new EventAdapter(mContext, results));
+                        eventAdapter.notifyDataSetChanged();
+                    } else {
+                        loading.dismiss();
+                        Toast.makeText(mContext, "Failed Pull Event Data", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                loading.dismiss();
 
                 recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                     GestureDetector gestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {

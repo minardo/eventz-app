@@ -108,30 +108,30 @@ public class MyEventActivity extends AppCompatActivity {
         mApiService.getMyEvent(userId).enqueue(new Callback<MyEventModel>() {
             @Override
             public void onResponse(Call<MyEventModel> call, Response<MyEventModel> response) {
-                final List<MyEventModelResult> results = response.body().getResults();
-                for (int i=0; i<results.size(); i++) {
-                    Log.i(TAG, "onResponse: "+results.get(i).getName());
-                }
-                if (response.isSuccessful()) {
-                    loading.dismiss();
-
-//                    rvMyEvent.setAdapter(new MyEventAdapter(mContext, results));
-//                    myEventAdapter.notifyDataSetChanged();
-
-                    myEventAdapter = new MyEventAdapter(MyEventActivity.this, results);
-                    rvMyEvent.setAdapter(myEventAdapter);
-                    myEventAdapter.notifyDataSetChanged();
+                if (response.body().getCount() == 0) {
+                    Toast.makeText(mContext, "My Event Empty", Toast.LENGTH_SHORT).show();
                 } else {
-                    loading.dismiss();
-                    Toast.makeText(mContext, "Failed Get My Event Data", Toast.LENGTH_SHORT).show();
+                    final List<MyEventModelResult> results = response.body().getResults();
+                    for (int i=0; i<results.size(); i++) {
+                        Log.i(TAG, "onResponse: "+results.get(i).getName());
+                    }
+                    if (response.isSuccessful()) {
+                        myEventAdapter = new MyEventAdapter(MyEventActivity.this, results);
+                        rvMyEvent.setAdapter(myEventAdapter);
+                        myEventAdapter.notifyDataSetChanged();
+                    } else {
+                        loading.dismiss();
+                        Toast.makeText(mContext, "Failed Get My Event Data", Toast.LENGTH_SHORT).show();
+                    }
                 }
+                loading.dismiss();
             }
 
             @Override
             public void onFailure(Call<MyEventModel> call, Throwable t) {
                 loading.dismiss();
-                Log.i(TAG, "onFailure: "+t.getMessage());
-                Toast.makeText(mContext, "onFailure: ", Toast.LENGTH_SHORT).show();
+//                Log.i(TAG, "onFailure: "+t.getMessage());
+                Toast.makeText(mContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
             }
         });
     }

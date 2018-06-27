@@ -1,12 +1,11 @@
 package com.example.ardo.eventz.networking;
 
 import com.example.ardo.eventz.model.AllUserModel;
-import com.example.ardo.eventz.model.AllUserModelResult;
 import com.example.ardo.eventz.model.CreateEventModel;
 import com.example.ardo.eventz.model.EventModel;
 import com.example.ardo.eventz.model.EventModelResult;
+import com.example.ardo.eventz.model.JoinEventModel;
 import com.example.ardo.eventz.model.MyEventModel;
-import com.example.ardo.eventz.model.MyEventModelResult;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -15,8 +14,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Url;
 
 public interface BaseApiService {
 
@@ -65,4 +64,9 @@ public interface BaseApiService {
 
     @GET("api_user/users")
     Call<AllUserModel> getAllUser();
+
+    @GET("api_event/event/{id}/join/")
+    Call<JoinEventModel> getJoinEvent(
+            @Path("id") Integer id
+    );
 }
