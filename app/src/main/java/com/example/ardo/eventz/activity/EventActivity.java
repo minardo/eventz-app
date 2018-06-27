@@ -44,7 +44,7 @@ public class EventActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Event");
 
-        rvEvent = (RecyclerView) findViewById(R.id.rvEvent);
+        rvEvent = findViewById(R.id.rvEvent);
 
         mContext = this;
         mApiService = UtilsApi.getApiService();
@@ -58,7 +58,7 @@ public class EventActivity extends AppCompatActivity {
     }
 
     private void getResultListEvent() {
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvEvent);
+        final RecyclerView recyclerView = findViewById(R.id.rvEvent);
         loading = ProgressDialog.show(this, null, "Please Wait...", true, false);
 
         mApiService.getAllEvent().enqueue(new Callback<EventModel>() {

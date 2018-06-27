@@ -9,4 +9,5 @@
     <color name="circle_create_event">#464343</color>
     <color name="circle_following_event">#4480b1</color>
     <color name="circle_logout">#8a638e</color>
+    <color name="circle_update_event">#ea0417</color>
 </resources>

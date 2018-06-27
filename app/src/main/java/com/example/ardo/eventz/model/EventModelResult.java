@@ -32,6 +32,16 @@ public class EventModelResult {
     @Expose
     private String eventType;
 
+    public EventModelResult(String name, String description, String place, String contact, Integer quota, String time, String eventType) {
+        this.name = name;
+        this.description = description;
+        this.place = place;
+        this.contact = contact;
+        this.quota = quota;
+        this.time = time;
+        this.eventType = eventType;
+    }
+
     public Integer getId() {
         return id;
     }

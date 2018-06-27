@@ -13,7 +13,9 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Url;
 
@@ -40,6 +42,19 @@ public interface BaseApiService {
     @POST("api_event/event/")
     Call<CreateEventModel> createEvent(
             @Header("csrftoken") String csrftoken,
+            @Field("name") String name,
+            @Field("description") String description,
+            @Field("place") String place,
+            @Field("contact") String contact,
+            @Field("quota") String quota,
+            @Field("time") String time,
+            @Field("event_type") String event_type
+    );
+
+    @PUT("api_event/event/{id}")
+    @FormUrlEncoded
+    Call<CreateEventModel> updateEvent(
+            @Path("id") int idEvent,
             @Field("name") String name,
             @Field("description") String description,
             @Field("place") String place,
