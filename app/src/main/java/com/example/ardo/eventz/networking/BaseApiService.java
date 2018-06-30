@@ -4,6 +4,7 @@ import com.example.ardo.eventz.model.AllUserModel;
 import com.example.ardo.eventz.model.CreateEventModel;
 import com.example.ardo.eventz.model.EventModel;
 import com.example.ardo.eventz.model.EventModelResult;
+import com.example.ardo.eventz.model.FollowingEventModel;
 import com.example.ardo.eventz.model.JoinEventModel;
 import com.example.ardo.eventz.model.MyEventModel;
 
@@ -74,6 +75,11 @@ public interface BaseApiService {
 
     @GET("api_user/users/{id}/events/")
     Call<MyEventModel> getMyEvent(
+            @Path("id") Integer userId
+    );
+
+    @GET("api_user/users/{id}/following_events/")
+    Call<FollowingEventModel> getFollowingEvent(
             @Path("id") Integer userId
     );
 
