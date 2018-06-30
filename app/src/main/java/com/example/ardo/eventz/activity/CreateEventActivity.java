@@ -128,6 +128,7 @@ public class CreateEventActivity extends AppCompatActivity {
                     Log.i("debug", "post submitted to API." + response.body().toString());
                     Toast.makeText(mContext, "Create Event Success", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
+                    finish();
                 }
             }
 
