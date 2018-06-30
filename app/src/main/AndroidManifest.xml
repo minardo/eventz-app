@@ -72,6 +72,14 @@
                 android:value=".activity.MainActivity" />
         </activity>
         <activity
+            android:name=".activity.FollowingEventDetailActivity"
+            android:label="@string/detail_event"
+            android:parentActivityName=".activity.FollowingEventActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.FollowingEventActivity" />
+        </activity>
+        <activity
             android:name=".activity.EventUpdateActivity"
             android:label="@string/my_event"
             android:parentActivityName=".activity.MyEventActivity">

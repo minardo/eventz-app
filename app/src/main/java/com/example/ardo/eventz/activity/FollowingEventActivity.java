@@ -19,6 +19,7 @@ import com.example.ardo.eventz.adapter.FollowingEventAdapter;
 import com.example.ardo.eventz.adapter.MyEventAdapter;
 import com.example.ardo.eventz.model.AllUserModel;
 import com.example.ardo.eventz.model.AllUserModelResult;
+import com.example.ardo.eventz.model.EventModelResult;
 import com.example.ardo.eventz.model.FollowingEventModel;
 import com.example.ardo.eventz.model.FollowingEventModelResult;
 import com.example.ardo.eventz.model.MyEventModel;
@@ -106,12 +107,14 @@ public class FollowingEventActivity extends AppCompatActivity {
     }
 
     private void getResultListFollowingEvent() {
+        final RecyclerView recyclerView = findViewById(R.id.rvFollowingEvent);
         loading = ProgressDialog.show(this, null, "Please Wait...", true, false);
         userId = Integer.valueOf(SessionManager.getCookiesPref(getApplicationContext(), SessionManager.SP_ID));
         Log.i(TAG, "UserID: "+userId);
         mApiService.getFollowingEvent(userId).enqueue(new Callback<FollowingEventModel>() {
             @Override
             public void onResponse(Call<FollowingEventModel> call, Response<FollowingEventModel> response) {
+                final List<FollowingEventModelResult> results = response.body().getResults();
 //                if (0 == response.body().getCount()) {
 //                    Toast.makeText(mContext, "Following Event Empty", Toast.LENGTH_SHORT).show();
 //                } else  {
@@ -131,7 +134,7 @@ public class FollowingEventActivity extends AppCompatActivity {
                 if (Objects.requireNonNull(response.body()).getCount() == 0) {
                     Toast.makeText(mContext, "Following Event Empty", Toast.LENGTH_SHORT).show();
                 } else  {
-                    final List<FollowingEventModelResult> results = response.body().getResults();
+//                    final List<FollowingEventModelResult> results = response.body().getResults();
                     for (int i=0; i<results.size(); i++) {
                         Log.i(TAG, "onResponse: "+results.get(i).getName());
                     }
@@ -145,6 +148,46 @@ public class FollowingEventActivity extends AppCompatActivity {
                     }
                 }
                 loading.dismiss();
+
+                recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+                    GestureDetector gestureDetector = new GestureDetector(getApplicationContext(), new GestureDetector.SimpleOnGestureListener() {
+                        public boolean onSingleTapUp(MotionEvent e) {
+                            return true;
+                        }
+                    });
+
+                    @Override
+                    public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                        View child = rv.findChildViewUnder(e.getX(), e.getY());
+                        if (child != null && gestureDetector.onTouchEvent(e)) {
+                            int position = rv.getChildAdapterPosition(child);
+//                            Toast.makeText(getApplicationContext(), "Id : " + results.get(position).getId() + " selected", Toast.LENGTH_SHORT).show();
+
+                            Intent i = new Intent(FollowingEventActivity.this, FollowingEventDetailActivity.class);
+                            i.putExtra("id", results.get(position).getId());
+                            i.putExtra("name", results.get(position).getName());
+                            i.putExtra("head_description", results.get(position).getDescription());
+                            i.putExtra("description", results.get(position).getDescription());
+                            i.putExtra("place", results.get(position).getPlace());
+                            i.putExtra("contact", results.get(position).getContact());
+                            i.putExtra("quota", results.get(position).getQuota().toString());
+                            i.putExtra("datetime", results.get(position).getTime());
+                            i.putExtra("category", results.get(position).getEventType());
+                            FollowingEventActivity.this.startActivity(i);
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
+                    }
+
+                    @Override
+                    public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+                    }
+                });
             }
 
             @Override
