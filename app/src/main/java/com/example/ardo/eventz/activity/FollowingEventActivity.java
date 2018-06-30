@@ -29,6 +29,7 @@ import com.example.ardo.eventz.utils.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
@@ -111,7 +112,23 @@ public class FollowingEventActivity extends AppCompatActivity {
         mApiService.getFollowingEvent(userId).enqueue(new Callback<FollowingEventModel>() {
             @Override
             public void onResponse(Call<FollowingEventModel> call, Response<FollowingEventModel> response) {
-                if (0 == response.body().getCount()) {
+//                if (0 == response.body().getCount()) {
+//                    Toast.makeText(mContext, "Following Event Empty", Toast.LENGTH_SHORT).show();
+//                } else  {
+//                    final List<FollowingEventModelResult> results = response.body().getResults();
+//                    for (int i=0; i<results.size(); i++) {
+//                        Log.i(TAG, "onResponse: "+results.get(i).getName());
+//                    }
+//                    if (response.isSuccessful()) {
+//                        followingEventAdapter = new FollowingEventAdapter(FollowingEventActivity.this, results);
+//                        rvFollowingEvent.setAdapter(followingEventAdapter);
+//                        followingEventAdapter.notifyDataSetChanged();
+//                    } else {
+//                        loading.dismiss();
+//                        Toast.makeText(mContext, "Failed Get Following Event Data", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+                if (Objects.requireNonNull(response.body()).getCount() == 0) {
                     Toast.makeText(mContext, "Following Event Empty", Toast.LENGTH_SHORT).show();
                 } else  {
                     final List<FollowingEventModelResult> results = response.body().getResults();
@@ -134,6 +151,7 @@ public class FollowingEventActivity extends AppCompatActivity {
             public void onFailure(Call<FollowingEventModel> call, Throwable t) {
                 loading.dismiss();
                 Toast.makeText(mContext, "No Internet Connection", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
     }
