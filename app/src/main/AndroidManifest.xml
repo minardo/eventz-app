@@ -12,8 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.LoginActivity"
-            android:label="@string/login">
+            android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,7 +63,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.EventUpdateActivity"></activity>
+        <activity
+            android:name=".activity.EventUpdateActivity"
+            android:label="@string/my_event"
+            android:parentActivityName=".activity.MyEventActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MyEventActivity" />
+        </activity>
     </application>
 
 </manifest>
