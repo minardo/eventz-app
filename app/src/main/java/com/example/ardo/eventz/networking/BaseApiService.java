@@ -10,6 +10,7 @@ import com.example.ardo.eventz.model.MyEventModel;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -52,7 +53,7 @@ public interface BaseApiService {
             @Field("event_type") String event_type
     );
 
-    @PUT("api_event/event/{id}")
+    @PUT("api_event/event/{id}/")
     @FormUrlEncoded
     Call<CreateEventModel> updateEvent(
             @Path("id") int idEvent,
@@ -88,6 +89,11 @@ public interface BaseApiService {
 
     @GET("api_event/event/{id}/join/")
     Call<JoinEventModel> getJoinEvent(
+            @Path("id") Integer id
+    );
+
+    @DELETE("api_event/event/{id}/")
+    Call<EventModelResult> deleteMyEvent(
             @Path("id") Integer id
     );
 }

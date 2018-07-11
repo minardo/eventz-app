@@ -1,9 +1,11 @@
 package com.example.ardo.eventz.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.ardo.eventz.R;
+import com.example.ardo.eventz.activity.EventUpdateActivity;
+import com.example.ardo.eventz.activity.MyEventActivity;
 import com.example.ardo.eventz.model.MyEventModelResult;
 
 import java.util.List;
@@ -56,6 +60,8 @@ public class MyEventAdapter extends RecyclerView.Adapter<MyEventAdapter.MyEventH
         holder.tvNameEvent.setText(myeventitemlist.getName());
         holder.tvDescEvent.setText(myeventitemlist.getDescription());
 
+
+        Log.v("adapter "+position+" : ", myeventitemlist.getId().toString());
         String nameEvent = myeventitemlist.getName();
         String firstCharNameEvent = nameEvent.substring(0, 1);
 
@@ -69,7 +75,7 @@ public class MyEventAdapter extends RecyclerView.Adapter<MyEventAdapter.MyEventH
         return myEventItemList.size();
     }
 
-    class MyEventHolder extends RecyclerView.ViewHolder {
+    class MyEventHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // This class for casting variable
         ImageView ivTextDrawable;
@@ -81,6 +87,35 @@ public class MyEventAdapter extends RecyclerView.Adapter<MyEventAdapter.MyEventH
             ivTextDrawable = (ImageView) itemView.findViewById(R.id.ivTextDrawable);
             tvNameEvent = (TextView) itemView.findViewById(R.id.tvNameEvent);
             tvDescEvent = (TextView) itemView.findViewById(R.id.tvDescEvent);
+
+            itemView.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(context, EventUpdateActivity.class);
+            i.putExtra("id", myEventItemList.get(getAdapterPosition()).getId());
+            i.putExtra("name", myEventItemList.get(getAdapterPosition()).getName());
+            i.putExtra("description", myEventItemList.get(getAdapterPosition()).getDescription());
+            i.putExtra("place", myEventItemList.get(getAdapterPosition()).getPlace());
+            i.putExtra("contact", myEventItemList.get(getAdapterPosition()).getContact());
+            i.putExtra("quota", myEventItemList.get(getAdapterPosition()).getQuota());
+            i.putExtra("time", myEventItemList.get(getAdapterPosition()).getTime());
+            i.putExtra("event_type", myEventItemList.get(getAdapterPosition()).getEventType());
+
+
+/*
+            "id": 103,
+                    "user_id": 49,
+                    "name": "Django 101",
+                    "description": "Introducing Django Web Framework",
+                    "place": "Tangerangss",
+                    "contact": "081911088626",
+                    "quota": 50,
+                    "time": "2018-07-02 11:00:00+00:00",
+                    "event_type": "Workshop"*/
+            context.startActivity(i);
         }
     }
 

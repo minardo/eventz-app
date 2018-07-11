@@ -82,10 +82,10 @@
         <activity
             android:name=".activity.EventUpdateActivity"
             android:label="@string/my_event"
-            android:parentActivityName=".activity.MyEventActivity">
+            android:parentActivityName=".activity.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activity.MyEventActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
     </application>
 
